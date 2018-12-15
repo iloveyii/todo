@@ -33,6 +33,8 @@
         public function setAttributes($attributes)
         {
             $this->id = isset($attributes['id'])  ? $attributes['id'] : null;
+            $this->title = $attributes['title'];
+            $this->status = $attributes['status'];
             $this->isNewRecord = $this->id === null ? true : false;
             return $this;
         }
@@ -46,7 +48,7 @@
             return [
                 'id' => ['integer'],
                 'title' => ['string', 'minLength'=>5, 'maxLength'=>140, 'alpha', 'stripTags'],
-                'status' => ['string', 'minLength'=>1, 'maxLength'=>10, 'alpha'],
+                'status' => ['string', 'minLength'=>1, 'maxLength'=>20, 'alpha'],
             ];
         }
 
@@ -57,7 +59,7 @@
             $createTable = "CREATE TABLE $this->tableName(
                 id INT( 11 ) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 title VARCHAR( 140 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-                status VARCHAR( 10 ) NOT NULL
+                status VARCHAR( 20 ) NOT NULL
                 );";
             $result = Database::connect()->exec($createTable);
             Log::write("Created table $this->tableName", INFO);

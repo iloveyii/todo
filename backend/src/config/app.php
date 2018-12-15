@@ -16,7 +16,7 @@ define('NO_DUMMY_DATA', false);
  * Set DB credentials here
  */
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'sportspoll');
+define('DB_NAME', 'billmate');
 define('DB_USER', 'root');
 define('DB_PASS', 'root');
 
