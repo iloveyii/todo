@@ -15,3 +15,4 @@ $task->dropTable();
 $task->createTable();
 printf ("Created table %s. " . PHP_EOL, $task->tableName);
 echo PHP_EOL;
+
