@@ -1,0 +1,6 @@
+vendor/
+*.xml
+.idea/
+log.txt
+error.log
+*.log

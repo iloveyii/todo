@@ -1,0 +1,19 @@
+body, p { font-size: 20px; }
+
+td span input {
+	padding: 0.5rem 0.5rem !important;
+}
+
+.table th, .table td {
+	padding: 1.5rem 0 !important;
+}
+
+.table th div, .table td div {
+    text-align: center !important;
+    display: block !important;
+}
+
+.table th {
+    font-size: 1rem !important;
+    font-family: sans-serif !important;
+}
