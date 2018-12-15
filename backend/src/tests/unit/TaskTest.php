@@ -16,6 +16,7 @@
         {
             $model = new Task();
             $rows = $model->read();
+            $this->assertInstanceOf('App\Models\Task', $model);
             $this->assertTrue(is_array($rows));
         }
 
