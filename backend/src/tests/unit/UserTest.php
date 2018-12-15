@@ -20,18 +20,19 @@
             $this->assertTrue(is_array($rows));
         }
 
-        /*
+
         public function testCanInsertDataIntoUser()
         {
             $data = [
-                'title' => 'Develop Todo list',
-                'status' => 'IN_PROGRESS'
+                'username' => 'testUser',
+                'password' => 'unitTest'
             ];
             $this->user->setAttributes($data);
             $id = $this->user->create();
             $this->assertTrue($id > 0);
         }
 
+        /*
         public function testCanDeleteDataFromUser()
         {
             $data = [
