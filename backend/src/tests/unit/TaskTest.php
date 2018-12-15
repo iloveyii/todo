@@ -1,6 +1,7 @@
 <?php
-    use PHPUnit\Framework\TestCase;
+
     use App\Models\Task;
+    use PHPUnit\Framework\TestCase;
 
 
     class TaskTest extends TestCase
@@ -9,7 +10,7 @@
 
         public function setUp()
         {
-           $this->task = new Task();
+            $this->task = new Task();
         }
 
         public function testTaskTableReturnsArray()
@@ -29,5 +30,18 @@
             $id = $this->task->create();
             $this->assertTrue($id > 0);
         }
+
+        public function testCanDeleteDataFromTask()
+        {
+            $data = [
+                'title' => 'Develop Todo list 2',
+                'status' => 'IN_PROGRESS'
+            ];
+            $this->task->setAttributes($data);
+            $this->task->create();
+            $result = $this->task->delete();
+            $this->assertTrue($result > 0);
+        }
+
 
     }

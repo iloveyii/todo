@@ -80,7 +80,9 @@
                                  ON DUPLICATE KEY UPDATE title=:title, status=:status
                                  ", $this->tableName);
             $params = [':title'=>$this->title, ':status'=>$this->status];
-            return Database::connect()->insert($query, $params);
+            $id = Database::connect()->insert($query, $params);
+            $this->id = $id;
+            return $id;
         }
 
         /**
