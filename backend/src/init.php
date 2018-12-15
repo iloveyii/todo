@@ -8,6 +8,24 @@ use App\Models\Database;
 \App\Models\Log::clear();
 
 /**
+ * Create table task
+ */
+$task = new \App\Models\Task();
+$task->dropTable();
+$task->createTable();
+printf ("Created table %s. " . PHP_EOL, $task->tableName);
+echo PHP_EOL;
+
+
+
+
+
+
+
+
+
+
+/**
  * Create table event and import all data from json file
  */
 $event = new \App\Models\Event();

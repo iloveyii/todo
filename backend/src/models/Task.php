@@ -57,7 +57,7 @@
             $createTable = "CREATE TABLE $this->tableName(
                 id INT( 11 ) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 title VARCHAR( 140 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-                status VARCHAR( 10 ) NOT NULL,
+                status VARCHAR( 10 ) NOT NULL
                 );";
             $result = Database::connect()->exec($createTable);
             Log::write("Created table $this->tableName", INFO);
