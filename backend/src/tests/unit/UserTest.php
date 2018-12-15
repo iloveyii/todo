@@ -32,12 +32,12 @@
             $this->assertTrue($id > 0);
         }
 
-        /*
+
         public function testCanDeleteDataFromUser()
         {
             $data = [
-                'title' => 'Develop Todo list 2',
-                'status' => 'IN_PROGRESS'
+                'username' => 'testUser2',
+                'password' => 'unitTest2'
             ];
             $this->user->setAttributes($data);
             $this->user->create();
@@ -45,6 +45,7 @@
             $this->assertTrue($result > 0);
         }
 
+        /*
         public function testCanUpdateDataIntoUser()
         {
             $data = [

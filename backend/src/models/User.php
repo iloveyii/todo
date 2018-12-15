@@ -120,10 +120,11 @@ class User extends Model
         $query = sprintf("INSERT INTO %s (username, password) 
                                  VALUES (:username, :password)", $this->tableName);
         $params = [':username'=>$this->username, ':password'=>password_hash($this->password, PASSWORD_BCRYPT)];
-        $result = Database::connect()->insert($query, $params);
+        $id = Database::connect()->insert($query, $params);
+        $this->id = $id;
         Log::write("Inserted user {$this->username} into table $this->tableName", INFO);
 
-        return $result;
+        return $id;
     }
 
 
