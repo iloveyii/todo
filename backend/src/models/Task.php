@@ -82,6 +82,7 @@
             $params = [':title'=>$this->title, ':status'=>$this->status];
             $id = Database::connect()->insert($query, $params);
             $this->id = $id;
+            Log::write("Inserted record into table $this->tableName with id $id", INFO);
             return $id;
         }
 

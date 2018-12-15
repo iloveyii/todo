@@ -73,6 +73,7 @@ abstract class Model
         $query = sprintf("DELETE FROM %s WHERE id=:id", $this->tableName);
         $params = [':id'=>$this->id];
         $result = Database::connect()->delete($query, $params);
+        Log::write("Deleted record from table $this->tableName with id $this->id", INFO);
         return $result;
     }
 
