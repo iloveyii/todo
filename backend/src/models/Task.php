@@ -100,6 +100,7 @@
             if($id !== null) {
                 $query = sprintf("SELECT * FROM %s WHERE id=:id", $this->tableName);
                 $params = [':id'=>$id];
+                return Database::connect()->selectOne($query, $params);
             }
             $rows = Database::connect()->selectAll($query, $params);
 

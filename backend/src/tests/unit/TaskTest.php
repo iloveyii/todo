@@ -43,5 +43,29 @@
             $this->assertTrue($result > 0);
         }
 
+        public function testCanUpdateDataIntoTask()
+        {
+            $data = [
+                'title' => 'Develop Todo list 3',
+                'status' => 'IN_PROGRESS'
+            ];
+            $this->task->setAttributes($data);
+            $this->task->create();
+            // Fetch record by id
+            $row = $this->task->read($this->task->id);
+            $this->assertEquals('Develop Todo list 3', $row['title']);
+
+            // Update
+            $data = [
+                'id' => $this->task->id,
+                'title' => 'Develop Todo list 4',
+                'status' => 'DONE'
+            ];
+            $this->task->setAttributes($data);
+            $this->task->update();
+            $row = $this->task->read($this->task->id);
+            $this->assertEquals('Develop Todo list 4', $row['title']);
+        }
+
 
     }
