@@ -30,6 +30,3 @@ Create a todo-list in PHP where the tasks are saved using MySQL
 * CSS framework is optional ( for example boostrap )
 
 ###### The definition of the words MUST, SHOULD and MAY can be found here [(http://www.ietf.org/rfc/rfc2119.txt)](http://www.ietf.org/rfc/rfc2119.txt)
-
-## Testing
-  * To run the php unit tests, inside backend/src run `phpunit ` .
