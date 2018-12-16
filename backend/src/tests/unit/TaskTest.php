@@ -1,15 +1,26 @@
 <?php
 
     use App\Models\Task;
+    use App\Models\User;
     use PHPUnit\Framework\TestCase;
 
 
     class TaskTest extends TestCase
     {
         public $task;
+        public static $user;
+
+        public static function setUpBeforeClass()
+        {
+            $user = new User();
+            $user->setAttributes(['username'=>'taskUser1', 'password'=>'taskPass1']);
+            $user->create();
+            self::$user = $user;
+        }
 
         public function setUp()
         {
+
             $this->task = new Task();
         }
 
@@ -23,6 +34,7 @@
         public function testCanInsertDataIntoTask()
         {
             $data = [
+                'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list',
                 'status' => 'IN_PROGRESS'
             ];
@@ -34,6 +46,7 @@
         public function testCanDeleteDataFromTask()
         {
             $data = [
+                'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list 2',
                 'status' => 'IN_PROGRESS'
             ];
@@ -46,6 +59,7 @@
         public function testCanUpdateDataIntoTask()
         {
             $data = [
+                'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list 3',
                 'status' => 'IN_PROGRESS'
             ];
@@ -58,6 +72,7 @@
             // Update
             $data = [
                 'id' => $this->task->id,
+                'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list 4',
                 'status' => 'DONE'
             ];
@@ -71,13 +86,13 @@
         {
             $this->assertClassHasAttribute('user_id', 'App\Models\Task');
             $data = [
-                'user_id' => 1,
+                'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list 5',
                 'status' => 'IN_PROGRESS'
             ];
             $this->task->setAttributes($data);
             $this->task->create();
-            $this->assertTrue($this->task->user_id === 1);
+            $this->assertTrue($this->task->user_id === self::$user->id);
         }
 
 
