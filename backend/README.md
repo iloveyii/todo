@@ -1,15 +1,14 @@
 Project Todo-list
 =======
-This a small application which enable users to poll on different sports events. These sports are categorized by sports 
-name and the user is then shown the events in a category at a time.
+This a small todo application developed in PHP, [Alip Framework](http://github.com/iloveyii/alip). 
 
-This framework does not use any built in libraries or packages. All code is custom written. It only uses composer for autoloading.
+Alip framework does not use any built in libraries or packages. All code is custom written. It only uses composer for autoloading.
 
-This framework is useful for a light PHP web application or RESTFull API application. This has been used on site [Simple Blog](http://alip.softhem.se).
+Alip framework is useful for a light PHP web application or RESTFull API application. This has been used on site [Simple Blog](http://alip.softhem.se).
 
 ## What has been done
    * We have developed a backend application in PHP which serves the API requests. We have used a small PHP MVC framework
-     called [Alip](http://github.com/iloveyii/alip).  
+     called [Todo-list](https://bitbucket.org/iloveyii/todo-list).  
    * We have used MySQL database which imports the events in the given json file to the event table in the database. 
      The database also stores info about user login and their polling in related tables. We have used two views in the
      database to help simplify the task.
@@ -29,13 +28,13 @@ This framework is useful for a light PHP web application or RESTFull API applica
      
 ## Setup and first run
 
-  * Clone the repository `git clone git@bitbucket.org:iloveyii/sports-poll.git`.
+  * Clone the repository `git clone git@bitbucket.org:iloveyii/todo-list.git`.
   * Run composer install `composer install`.
   * Then run composer command `composer dump-autoload`.
   * Create a database (manually for now) and adjust the database credentials in the `config/app.php` file as per your environment.
   * Run the init command to create the database table as `php init.php`.
-  * Point web browser to backend/src/web directory or Create a virtual host using [vh](https://github.com/iloveyii/vh) `vh new sportspoll -p ~/sportspoll/backend/src/web`
-  * Browse to [http://sportspoll.loc](http://sportspoll.loc) (default: username: admin, password: admin).
+  * Point web browser to backend/src/web directory or Create a virtual host using [vh](https://github.com/iloveyii/vh) `vh new todo-list -p ~/todo-list/backend/src/web`
+  * Browse to [http://todo-list.loc](http://todo-list.loc) (default: username: admin, password: admin).
   
 For more information about using Composer please see its [documentation](http://getcomposer.org/doc/).
 
@@ -65,7 +64,7 @@ $router->get('/posts/index', function ($request) {
 });
 ```
 
-DEMO is here [DEMO](http://sportspoll.softhem.se).
+DEMO is here [DEMO](http://todo-list.softhem.se).
 
 ## Overall Structure
 
