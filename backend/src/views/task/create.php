@@ -22,7 +22,7 @@ include_once "{$dirPath}/layout/navbar.php";
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6 pb-5">
+        <div class="col-12 col-md-8 col-lg-8git  pb-5">
             <form class="form-group" action="/task/create" method="post">
                 <div class="card">
                     <div class="card-header p-4">
