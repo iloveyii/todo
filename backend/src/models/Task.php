@@ -9,6 +9,7 @@
          * @var null|int
          */
         public $id;
+        public $user_id;
         public $title;
         public $status;
 
@@ -33,6 +34,7 @@
         public function setAttributes($attributes)
         {
             $this->id = isset($attributes['id'])  ? $attributes['id'] : null;
+            $this->user_id = isset($attributes['user_id'])  ? $attributes['user_id'] : null;
             $this->title = $attributes['title'];
             $this->status = $attributes['status'];
             $this->isNewRecord = $this->id === null ? true : false;
@@ -58,6 +60,7 @@
         {
             $createTable = "CREATE TABLE $this->tableName(
                 id INT( 11 ) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                user_id INT( 11 ) UNSIGNED,
                 title VARCHAR( 140 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
                 status VARCHAR( 20 ) NOT NULL
                 );";
@@ -75,11 +78,11 @@
          */
         public function create() : bool
         {
-            $query = sprintf("INSERT INTO %s (title, status) 
-                                 VALUES (:title, :status)
+            $query = sprintf("INSERT INTO %s (user_id, title, status) 
+                                 VALUES (:user_id, :title, :status)
                                  ON DUPLICATE KEY UPDATE title=:title, status=:status
                                  ", $this->tableName);
-            $params = [':title'=>$this->title, ':status'=>$this->status];
+            $params = [':user_id'=>$this->user_id, ':title'=>$this->title, ':status'=>$this->status];
             $id = Database::connect()->insert($query, $params);
             $this->id = $id;
             Log::write("Inserted record into table $this->tableName with id $id", INFO);

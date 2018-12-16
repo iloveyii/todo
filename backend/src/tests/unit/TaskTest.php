@@ -67,5 +67,18 @@
             $this->assertEquals('Develop Todo list 4', $row['title']);
         }
 
+        public function testTaskHasAttributeUserId()
+        {
+            $this->assertClassHasAttribute('user_id', 'App\Models\Task');
+            $data = [
+                'user_id' => 1,
+                'title' => 'Develop Todo list 5',
+                'status' => 'IN_PROGRESS'
+            ];
+            $this->task->setAttributes($data);
+            $this->task->create();
+            $this->assertTrue($this->task->user_id === 1);
+        }
+
 
     }
