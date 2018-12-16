@@ -50,7 +50,7 @@ class UserController extends Controller
         if($this->request->isPost()) {
             $params = $this->request->body();
             if($model->setAttributes($params)->validate() && $model->login()) {
-                header("Location: /events/index");
+                header("Location: /task/index");
                 return true;
             }
 

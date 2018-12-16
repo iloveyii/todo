@@ -2,14 +2,11 @@
 namespace App\Controllers;
 
 
-use App\Models\Event;
+use App\Models\Task;
 use App\Models\User;
 
-class EventController extends Controller
+class TaskController extends Controller
 {
-    const DATA_DIR = 'data';
-    const JSON_FILE = 'test-assignment.json';
-
     public function __construct($request)
     {
         $this->request = $request;
@@ -23,12 +20,13 @@ class EventController extends Controller
         if( ! User::isLoggedIn()) {
             header("Location: /user/login");
         }
-        $model = new Event();
-        $events = $model->readAllByRandomCategoryName($_SESSION['user_id']);
-        if(count($events) > 0 ) {
-            $this->render('index', $events);
+        $model = new Task();
+        $tasks = $model->read();
+
+        if(count($tasks) > 0 ) {
+            $this->render('index', $tasks);
         } else {
-            $this->render('thanks', []);
+            $this->render('nodata', []);
         }
     }
 

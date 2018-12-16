@@ -9,7 +9,7 @@ use App\Models\Request;
  * First create router object with params Request object and default route
  * Next declare the http methods
  */
-$router = new Router(new Request, '/events/index');
+$router = new Router(new Request, '/task/index');
 
 /**
  * Serve user pages
@@ -36,34 +36,22 @@ $router->post('/user/signup', function ($request) {
 });
 
 /**
- * Serve events pages
+ * Serve task pages
  */
-$router->get('/events/index', function ($request) {
-    $controller = new \App\Controllers\EventController($request);
+$router->get('/task/index', function ($request) {
+    $controller = new \App\Controllers\TaskController($request);
     $controller->index();
 });
 
-/**
- * Serve vote pages / requests
- */
-$router->post('/vote/create', function ($request) {
-    $controller = new \App\Controllers\VoteController($request);
-    $controller->create();
-});
 
 /**
  * For RESTFul API
  */
-$router->get('/api/v1/events', function ($request) {
+$router->get('/api/v1/task', function ($request) {
     header("Content-Type: application/json");
-    $controller = new \App\Controllers\EventController($request);
+    $controller = new \App\Controllers\TaskController($request);
     $result = $controller->all();
     echo json_encode($result);;
 });
 
-$router->get('/api/v1/random', function ($request) {
-    header("Content-Type: application/json");
-    $controller = new \App\Controllers\EventController($request);
-    $result = $controller->byRandomCategory();
-    echo json_encode($result);;
-});
+
