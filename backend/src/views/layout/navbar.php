@@ -11,7 +11,10 @@
                         <a class="nav-link" href="/user/logout">Logout (<?=\App\Models\User::getLoggedInUsername()?>) <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/events/index">Refresh <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/task/index">List <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/task/create">Create <span class="sr-only">(current)</span></a>
                     </li>
                 <?php else : ?>
                     <li class="nav-item">

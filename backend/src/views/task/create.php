@@ -26,7 +26,7 @@ include_once "{$dirPath}/layout/navbar.php";
             <form class="form-group" action="/task/create" method="post">
                 <div class="card">
                     <div class="card-header p-4">
-                        Sign up
+                        Add Todo
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -38,7 +38,7 @@ include_once "{$dirPath}/layout/navbar.php";
                             <input type="status" name="status" placeholder="Type status" class="form-control is-valid" id="status" value="<?=$model->status?>">
                         </div>
                         <br />
-                        <button type="submit" class="btn btn-outline-secondary">Sign up</button>
+                        <button type="submit" class="btn btn-outline-secondary">Add</button>
                     </div>
                 </div>
             </form>
