@@ -6,6 +6,13 @@
     class Task extends Model
     {
         /**
+         * Constants
+         */
+        const TODO = 1;
+        const IN_PROGRESS = 2;
+        const DONE = 3;
+
+        /**
          * @var null|int
          */
         public $id;
@@ -134,6 +141,15 @@
             $params = [':id'=>$this->id, ':title'=>$this->title, ':status'=>$this->status];
             $result = Database::connect()->update($query, $params);
             return $result;
+        }
+
+        public function statuses()
+        {
+            return [
+                self::TODO => 'To do',
+                self::IN_PROGRESS => 'In progress',
+                self::DONE => 'Done'
+            ];
         }
 
     }

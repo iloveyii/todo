@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html class="no-js">
 <?php
-$dirPath = realpath(dirname(dirname(__FILE__)));
-include_once "{$dirPath}/layout/head.php";
+    $dirPath = realpath(dirname(dirname(__FILE__)));
+    include_once "{$dirPath}/layout/head.php";
 ?>
 <body>
 <?php
-include_once "{$dirPath}/layout/navbar.php";
+    include_once "{$dirPath}/layout/navbar.php";
 ?>
 <div class="container">
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6 pb-5">
-           <?php
-            if($model->hasErrors()) {
-                $errors = $model->getErrors();
-                include_once "{$dirPath}/layout/errors.php";
-            }
-           ?>
+            <?php
+                if ($model->hasErrors()) {
+                    $errors = $model->getErrors();
+                    include_once "{$dirPath}/layout/errors.php";
+                }
+            ?>
         </div>
     </div>
 
@@ -31,13 +31,23 @@ include_once "{$dirPath}/layout/navbar.php";
                     <div class="card-body">
                         <div class="form-group">
                             <label class="form-control-label" for="title">Task</label>
-                            <input type="text" name="title" placeholder="Type title" class="form-control is-valid" id="title" value="<?=$model->title?>">
+                            <input type="text" name="title" placeholder="Type title" class="form-control is-valid"
+                                   id="title" value="<?= $model->title ?>">
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="description">Status</label>
-                            <input type="status" name="status" placeholder="Type status" class="form-control is-valid" id="status" value="<?=$model->status?>">
+                            <input type="status" name="status" placeholder="Type status" class="form-control is-valid"
+                                   id="status" value="<?= $model->status ?>">
                         </div>
-                        <br />
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" id="status" name="status">
+                                <?php foreach ($model->statuses() as $status=>$label):?>
+                                    <option <?=$model->status == $status ? "'selected'" :''?> ><?=$label?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                        <br/>
                         <button type="submit" class="btn btn-outline-secondary">Add</button>
                     </div>
                 </div>
