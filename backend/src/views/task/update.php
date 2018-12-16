@@ -45,7 +45,7 @@
                             </select>
                         </div>
                         <br/>
-                        <button type="submit" class="btn btn-outline-secondary">Add</button>
+                        <button type="submit" class="btn btn-outline-secondary">Update</button>
                     </div>
                 </div>
             </form>
@@ -59,3 +59,5 @@
 
 </body>
 </html>
+
+
