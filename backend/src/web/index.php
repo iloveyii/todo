@@ -48,11 +48,20 @@
         $controller->create();
     });
 
+    $router->get('/task/update/:id', function ($request) {
+        $controller = new \App\Controllers\TaskController($request);
+        $controller->update();
+    });
+
+    $router->post('/task/update', function ($request) {
+        $controller = new \App\Controllers\TaskController($request);
+        $controller->update();
+    });
+
     $router->post('/task/create', function ($request) {
         $controller = new \App\Controllers\TaskController($request);
         $controller->create();
     });
-
 
     $router->post('/task/delete', function ($request) {
         // header("Content-Type: application/json");
@@ -60,7 +69,6 @@
         $result = $controller->delete();
         echo json_encode($result);
     });
-
 
     /**
      * For RESTFul API

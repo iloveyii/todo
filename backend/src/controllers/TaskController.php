@@ -60,6 +60,31 @@ class TaskController extends Controller
         return $this->render('create', $model);
     }
 
+    public function update() : bool
+    {
+        if( ! User::isLoggedIn()) {
+            header("Location: /user/login");
+        }
+
+        $model = new Task();
+        $attributes = $this->request->body();
+        $user_id = User::getLoggedInUserId();
+        $attributes['user_id'] = $user_id;
+
+        if($this->request->isPost() && $model->setAttributes($attributes)->validate() && $model->update() ) {
+
+            header("Location: /task/index");
+            exit;
+        }
+
+        if(isset($_GET['id'])) {
+            $model->user_id = User::getLoggedInUserId();
+            $row = $model->read($_GET['id']);
+            $model->setAttributes($row);
+        }
+        return $this->render('update', $model);
+    }
+
     /**
      * Returns the list of all events
      */

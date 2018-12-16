@@ -36,7 +36,7 @@
             $data = [
                 'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list',
-                'status' => 'IN_PROGRESS'
+                'status' => Task::IN_PROGRESS
             ];
             $this->task->setAttributes($data);
             $id = $this->task->create();
@@ -48,7 +48,7 @@
             $data = [
                 'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list 2',
-                'status' => 'IN_PROGRESS'
+                'status' => Task::TODO
             ];
             $this->task->setAttributes($data);
             $this->task->create();
@@ -61,7 +61,7 @@
             $data = [
                 'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list 3',
-                'status' => 'IN_PROGRESS'
+                'status' => Task::DONE
             ];
             $this->task->setAttributes($data);
             $this->task->create();
@@ -74,7 +74,7 @@
                 'id' => $this->task->id,
                 'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list 4',
-                'status' => 'DONE'
+                'status' => Task::DONE
             ];
             $this->task->setAttributes($data);
             $this->task->update();
@@ -88,7 +88,7 @@
             $data = [
                 'user_id'=>self::$user->id,
                 'title' => 'Develop Todo list 5',
-                'status' => 'IN_PROGRESS'
+                'status' => Task::DONE
             ];
             $this->task->setAttributes($data);
             $this->task->create();

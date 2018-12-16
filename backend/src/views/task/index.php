@@ -37,11 +37,12 @@
                         <td><?= $task['id'] ?></td>
                         <td><?= $task['user_id'] ?></td>
                         <td><?= $task['title'] ?></td>
-                        <td><?= $task['status'] ?></td>
+                        <td><?= \App\Models\Task::getStatusLabel($task['status']) ?></td>
                         <td>
                             <form action="/task/delete" method="post">
                                 <input type="hidden" name="id" value="<?= $task['id'] ?>"/>
                                 <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+                                <a href="/task/update?id=<?=$task['id']?>" class="btn btn-sm btn-info"> Update </a>
                             </form>
                         </td>
                     </tr>

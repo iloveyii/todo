@@ -56,8 +56,8 @@
         {
             return [
                 'id' => ['integer'],
-                'title' => ['string', 'minLength'=>5, 'maxLength'=>140, 'alpha', 'stripTags'],
-                'status' => ['string', 'minLength'=>1, 'maxLength'=>20, 'alpha'],
+                'title' => ['string', 'minLength'=>2, 'maxLength'=>140, 'stripTags'],
+                'status' => ['integer', 'minValue'=>1, 'maxValue'=>3],
             ];
         }
 
@@ -69,7 +69,7 @@
                 id INT( 11 ) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 user_id INT( 11 ) UNSIGNED,
                 title VARCHAR( 140 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-                status VARCHAR( 20 ) NOT NULL
+                status INT( 11 ) NOT NULL
                 );";
             $result = Database::connect()->exec($createTable);
             Log::write("Created table $this->tableName", INFO);
@@ -150,6 +150,17 @@
                 self::IN_PROGRESS => 'In progress',
                 self::DONE => 'Done'
             ];
+        }
+
+        public static function getStatusLabel($status)
+        {
+            $statuses= [
+                self::TODO => 'To do',
+                self::IN_PROGRESS => 'In progress',
+                self::DONE => 'Done'
+            ];
+
+            return isset($statuses[$status]) ? $statuses[$status] : 'NA';
         }
 
     }

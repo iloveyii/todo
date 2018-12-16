@@ -23,23 +23,24 @@
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-8git  pb-5">
-            <form class="form-group" action="/task/create" method="post">
+            <form class="form-group" action="/task/update" method="post">
                 <div class="card">
                     <div class="card-header p-4">
-                        Add Todo
+                        Update Todo
                     </div>
                     <div class="card-body">
                         <div class="form-group">
                             <label class="form-control-label" for="title">Task</label>
+                            <input type="hidden" name="id" value="<?=$model->id?>" />
                             <input type="text" name="title" placeholder="Type title" class="form-control is-valid"
-                                   id="title" value="<?= $model->title ?>">
+                                   id="title" value="<?= $model->title ?>" />
                         </div>
 
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select class="form-control" id="status" name="status">
                                 <?php foreach ($model->statuses() as $status=>$label):?>
-                                    <option value="<?=$status?>" <?=$model->status == $status ? "'selected'" :''?> ><?=$label?></option>
+                                    <option value="<?=$status?>" <?=$model->status == $status ? "selected" :''?> ><?=$label?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>

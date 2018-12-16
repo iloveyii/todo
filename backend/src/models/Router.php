@@ -58,8 +58,15 @@ class Router
 
         // Set Default Route's Method
         $this->defaultMethod = $this->defaultRoute === $route ? $method : $this->defaultMethod;
+        // Check it url has get params
+        $routeArray = explode(':', $route);
+        $similarRedirectUrl = null;
+        if(count($routeArray) > 1) {
+            $similarRedirectUrl = str_replace($routeArray[0], $routeArray[0], $redirectUrl);
+            $this->getParams($route);
+        }
 
-        if($route === $redirectUrl && $this->request->requestMethod === 'GET') {
+        if( ($route === $redirectUrl || $redirectUrl===$similarRedirectUrl ) && $this->request->requestMethod === 'GET') {
             $this->pathNotFound = false;
             call_user_func_array($method, [$this->request]);
             Log::write('Found route ' . $route, INFO);
