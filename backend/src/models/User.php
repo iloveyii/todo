@@ -165,8 +165,8 @@ class User extends Model
      */
     public function update() : bool
     {
-        $query = sprintf("UPDATE %s SET title=:title, description=:description WHERE id=:id", $this->tableName);
-        $params = [':id'=>$this->id, ':title'=>$this->title, ':description'=>$this->description];
+        $query = sprintf("UPDATE %s SET username=:username, password=:password WHERE id=:id", $this->tableName);
+        $params = [':id'=>$this->id, ':username'=>$this->username, ':password'=>$this->password];
         $result = Database::connect()->update($query, $params);
         return $result;
     }

@@ -3,7 +3,6 @@
     use App\Models\User;
     use PHPUnit\Framework\TestCase;
 
-
     class UserTest extends TestCase
     {
         public $user;
@@ -20,7 +19,6 @@
             $this->assertTrue(is_array($rows));
         }
 
-
         public function testCanInsertDataIntoUser()
         {
             $data = [
@@ -31,7 +29,6 @@
             $id = $this->user->create();
             $this->assertTrue($id > 0);
         }
-
 
         public function testCanDeleteDataFromUser()
         {
@@ -45,30 +42,29 @@
             $this->assertTrue($result > 0);
         }
 
-        /*
         public function testCanUpdateDataIntoUser()
         {
             $data = [
-                'title' => 'Develop Todo list 3',
-                'status' => 'IN_PROGRESS'
+                'username' => 'testUser3',
+                'password' => 'unitTest3'
             ];
             $this->user->setAttributes($data);
             $this->user->create();
             // Fetch record by id
             $row = $this->user->read($this->user->id);
-            $this->assertEquals('Develop Todo list 3', $row['title']);
+            $this->assertEquals('testUser3', $row['username']);
 
             // Update
             $data = [
                 'id' => $this->user->id,
-                'title' => 'Develop Todo list 4',
-                'status' => 'DONE'
+                'username' => 'testUser4',
+                'password' => 'unitTest4'
             ];
             $this->user->setAttributes($data);
             $this->user->update();
-            $row = $this->user->read($this->user->id);
-            $this->assertEquals('Develop Todo list 4', $row['title']);
+            $id = $this->user->id;
+            $row = $this->user->read($id);
+            $this->assertEquals('testUser4', $row['username']);
         }
-        */
 
     }
