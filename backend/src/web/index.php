@@ -53,6 +53,15 @@
         $controller->create();
     });
 
+
+    $router->post('/task/delete', function ($request) {
+        // header("Content-Type: application/json");
+        $controller = new \App\Controllers\TaskController($request);
+        $result = $controller->delete();
+        echo json_encode($result);
+    });
+
+
     /**
      * For RESTFul API
      */

@@ -21,6 +21,8 @@ class TaskController extends Controller
             header("Location: /user/login");
         }
         $model = new Task();
+        $model->user_id = User::getLoggedInUserId();
+
         $tasks = $model->read();
 
         if(count($tasks) > 0 ) {
@@ -67,4 +69,23 @@ class TaskController extends Controller
         $events = $model->readAll();
         return ['events'=>$events];
     }
+
+    /**
+     * Deletes a post
+     * The id of the post exists in the params attribute of request object
+     */
+    public function delete()
+    {
+        $user = new Task();
+        $attributes = $this->request->body();
+
+        if( $user->setAttributes($attributes)->delete() ) {
+            // return ['status' => 'success']; // for ajax
+            header("Location: /task/index");
+            exit;
+        }
+
+        return ['status' => 'cannot delete'];
+    }
+
 }

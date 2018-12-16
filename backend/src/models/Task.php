@@ -35,8 +35,8 @@
         {
             $this->id = isset($attributes['id'])  ? $attributes['id'] : null;
             $this->user_id = isset($attributes['user_id'])  ? $attributes['user_id'] : null;
-            $this->title = $attributes['title'];
-            $this->status = $attributes['status'];
+            $this->title = isset($attributes['title'])? $attributes['title']:null;
+            $this->status = isset($attributes['status'])?$attributes['status']:null;
             $this->isNewRecord = $this->id === null ? true : false;
             return $this;
         }
@@ -97,12 +97,12 @@
          */
         public function read( $id = null) : array
         {
-            $query = sprintf("SELECT * FROM %s", $this->tableName);
-            $params = [];
+            $query = sprintf("SELECT * FROM %s WHERE user_id=:user_id", $this->tableName);
+            $params = [':user_id'=>$this->user_id];
 
             if($id !== null) {
-                $query = sprintf("SELECT * FROM %s WHERE id=:id", $this->tableName);
-                $params = [':id'=>$id];
+                $query = sprintf("SELECT * FROM %s WHERE id=:id AND user_id=:user_id", $this->tableName);
+                $params = [':id'=>$id , ':user_id'=>$this->user_id];
                 return Database::connect()->selectOne($query, $params);
             }
             $rows = Database::connect()->selectAll($query, $params);

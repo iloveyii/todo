@@ -118,9 +118,10 @@ class Router
     public function delete($route, $method)
     {
         $this->request->route = $route;
+        $redirectUrl = $this->request->redirectUrl;
         $this->getParams($route);
 
-        if($this->request->requestMethod === 'DELETE') {
+        if($this->request->requestMethod === 'DELETE' || $this->request->requestMethod === 'POST') {
             $this->pathNotFound = false;
             call_user_func_array($method, [$this->request]);
             exit(0);
