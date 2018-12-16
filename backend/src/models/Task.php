@@ -69,7 +69,9 @@
                 id INT( 11 ) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 user_id INT( 11 ) UNSIGNED,
                 title VARCHAR( 140 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-                status INT( 11 ) NOT NULL
+                status INT( 11 ) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                 );";
             $result = Database::connect()->exec($createTable);
             Log::write("Created table $this->tableName", INFO);

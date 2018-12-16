@@ -49,7 +49,7 @@ class User extends Model
     {
         return [
             'id' => ['integer'],
-            'username' => ['string', 'minLength'=>3, 'maxLength'=>40, 'alpha'],
+            'username' => ['string', 'minLength'=>3, 'maxLength'=>40],
             'password' => ['string', 'minLength'=>3, 'maxLength'=>60],
             'verifyPassword' => ['string', 'minLength'=>3, 'maxLength'=>60, 'shouldMatchProperty'=>'password'],
         ];
