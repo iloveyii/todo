@@ -68,7 +68,7 @@ DEMO is here [DEMO](http://todo-list.softhem.se).
 
 ## Overall Structure
 
-Bellow the directory structure used:
+Below is the directory structure of the source code:
 
 ```
 
