@@ -111,7 +111,7 @@
          */
         public function read( $id = null) : array
         {
-            $sortOrder = $this->sort === 'created_at' ? 'ASC' : 'DESC';
+            $sortOrder = $this->sort === 'created_at' ? 'DESC' : 'ASC';
             $query = sprintf("SELECT * FROM %s WHERE user_id=:user_id ORDER BY created_at %s", $this->tableName, $sortOrder);
             $params = [':user_id'=>$this->user_id];
 
