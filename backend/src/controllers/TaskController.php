@@ -22,6 +22,9 @@ class TaskController extends Controller
         }
         $model = new Task();
         $model->user_id = User::getLoggedInUserId();
+        if(isset($_GET['sort'])) {
+            $model->sort = $_GET['sort'];
+        }
 
         $tasks = $model->read();
 

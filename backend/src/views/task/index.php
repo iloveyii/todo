@@ -7,6 +7,10 @@
 <body>
 <?php
     include_once "{$dirPath}/layout/navbar.php";
+    $sort = 'created_at';
+    if(isset($_GET['sort']) && $_GET['sort']==='created_at') {
+        $sort = '-created_at';
+    }
 ?>
 
 <div class="container">
@@ -25,9 +29,9 @@
                 <thead>
                 <tr>
                     <th>Task ID</th>
-                    <th>User ID</th>
                     <th>Title</th>
                     <th>Status</th>
+                    <th><a href="/task/index?sort=<?=$sort?>">Created At</a></th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -35,9 +39,9 @@
                 <?php foreach ($model as $task) : ?>
                     <tr>
                         <td><?= $task['id'] ?></td>
-                        <td><?= $task['user_id'] ?></td>
                         <td><?= $task['title'] ?></td>
-                        <td><?= \App\Models\Task::getStatusLabel($task['status']) ?></td>
+                        <td><?=\App\Models\Task::getStatusLabel($task['status'])?></td>
+                        <td><?=$task['created_at']?></td>
                         <td>
                             <form action="/task/delete" method="post">
                                 <input type="hidden" name="id" value="<?= $task['id'] ?>"/>

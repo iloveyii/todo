@@ -21,6 +21,11 @@
         public $status;
 
         /**
+         * For sorting
+         */
+        public $sort = 'created_at';
+
+        /**
          * @var string
          */
         public $tableName = 'task';
@@ -106,11 +111,12 @@
          */
         public function read( $id = null) : array
         {
-            $query = sprintf("SELECT * FROM %s WHERE user_id=:user_id", $this->tableName);
+            $sortOrder = $this->sort === 'created_at' ? 'ASC' : 'DESC';
+            $query = sprintf("SELECT * FROM %s WHERE user_id=:user_id ORDER BY created_at %s", $this->tableName, $sortOrder);
             $params = [':user_id'=>$this->user_id];
 
             if($id !== null) {
-                $query = sprintf("SELECT * FROM %s WHERE id=:id AND user_id=:user_id", $this->tableName);
+                $query = sprintf("SELECT * FROM %s WHERE id=:id AND user_id=:user_id ORDER BY created_at %s", $this->tableName, $sortOrder);
                 $params = [':id'=>$id , ':user_id'=>$this->user_id];
                 return Database::connect()->selectOne($query, $params);
             }
