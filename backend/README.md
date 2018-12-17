@@ -80,20 +80,15 @@ Bellow the directory structure used:
    |---models
    |----Database.php
    |----User.php
-   |----Event.php
-   |----Vote.php
-   |----Winner.php
+   |----Task.php
    |----Request.php
    |----Router.php
    |---views
-   |----event
+   |----task
    |----user
    |---web
    |----index.php
    |----assets
-   |-frontend
-   |--src
-   
 ```
 
 ## Requirements
@@ -109,5 +104,5 @@ Bellow the directory structure used:
 ## Testing
   * To run the php unit tests, inside backend/src run `phpunit ` .
   
-<i>Web development has never been so fun.</i>  
+  <i>Web development has never been so fun.</i>  
 [Hazrat Ali](http://blog.softhem.se/) 
