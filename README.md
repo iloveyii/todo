@@ -6,6 +6,7 @@ Alip framework does not use any built in libraries or packages. All code is cust
 
 Alip framework is useful for a light PHP web application or RESTFull API application. This has been used on site [Simple Blog](http://alip.softhem.se) and [Sports Poll](http://sportspoll.softhem.se/).
 
+![Screenshot](http://todo-list.softhem.se/screenshot.png)
 
 ## Requirements
 ### Settings
